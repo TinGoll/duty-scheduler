@@ -6,6 +6,7 @@ import tseslint from "typescript-eslint";
 import prettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import unusedImports from "eslint-plugin-unused-imports";
+import prettierPlugin from "eslint-plugin-prettier";
 
 export default tseslint.config([
   js.configs.recommended,
@@ -20,9 +21,13 @@ export default tseslint.config([
       sourceType: "module",
       globals: globals.browser,
     },
+    extends: [
+      prettier
+    ],
     plugins: {
       import: importPlugin,
       "unused-imports": unusedImports,
+      prettier: prettierPlugin,
     },
     rules: {
       "no-console": "warn",
@@ -51,6 +56,7 @@ export default tseslint.config([
           "newlines-between": "always",
         },
       ],
+      "prettier/prettier": "warn",
     },
   },
   prettier,
